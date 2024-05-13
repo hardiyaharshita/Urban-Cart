@@ -34,8 +34,11 @@ app.use("/api/v1/product", productRoutes);
 //app.use("*", function (req, res) {
  // res.sendFile(path.join(__dirname, "./client/build/index.html"));
 //});
-const __filename = ./client/build/index.html(import.meta.url); // get the resolved path to the file
+const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
 const __dirname = path.dirname(__filename); // get the name of the directory
+app.use("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 console.log(__dirname);
 
 //port
