@@ -8,6 +8,7 @@ import cors from "cors";
 import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import path from "path";
+import { fileURLToPath } from 'url';
 
 //configure env
 dotenv.config();
@@ -30,9 +31,12 @@ app.use("/api/v1/category", categoryRoutes);
 app.use("/api/v1/product", productRoutes);
 
 //rest api
-app.use("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+//app.use("*", function (req, res) {
+ // res.sendFile(path.join(__dirname, "./client/build/index.html"));
+//});
+const __filename = ./client/build/index.html(import.meta.url); // get the resolved path to the file
+const __dirname = path.dirname(__filename); // get the name of the directory
+console.log(__dirname);
 
 //port
 const PORT = process.env.PORT || 4000;
